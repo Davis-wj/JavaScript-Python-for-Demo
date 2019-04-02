@@ -8,9 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Required script tags-->
   <script src="blog.js"></script>
+  <script src="./js/main.js"></script>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    ]<!--Required CSS-->
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
@@ -26,6 +29,26 @@
       I took a couple of photos.....
     </p>
   </div>
+  
+<div class="quote-box">
+  <div class="quote-text">
+    <i class="fa fa-quote-left"> </i><span id="text"></span>
+  </div>
+  <div class="quote-author">
+    - <span id="author"></span>
+  </div>
+  <div class="buttons">
+    <a class="button" id="tweet-quote" title="Tweet this quote!" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+     <a class="button" id="tumblr-quote" title="Post this quote on tumblr!" target="_blank">
+      <i class="fa fa-tumblr"></i>
+    </a>
+    <button class="button" id="new-quote">New quote</button>
+  </div>
+</div>
+<div class="footer"> by <a href="https://codepen.io/hezag/">gnuns</a></div>
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
