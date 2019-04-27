@@ -28,7 +28,7 @@ class Students(models.Model):
 
     class Meta:
         #定义数据表名，推荐使用小写字母
-        db_table="stdents"
+        db_table="students"
         #对象的默认排序字段，获取对象的列表时使用
         #注意排序会增加数据库的开销
         ordering=['id'] # 默认为升序，若为降序则加‘-’号，如[-'id']
