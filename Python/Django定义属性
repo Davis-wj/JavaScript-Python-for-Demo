@@ -1,0 +1,139 @@
+定义属性
+	概述
+		。django根据属性的类型确定以下信息
+			.当前选择的数据库支持字段的类型
+			.渲染管理表单时使用的默认html控件
+			.在管理站点最低限度的验证
+			
+		.django会为表增加自动增长的主键列，每个模型只能有一个主键列，如果使用
+		选项设置属性为主键列后 则django不会在生成默认的主键列
+		
+		.属性命名限制
+			.不能是python的保留关键字
+			.由于django的查询方式，不允许使用连续的下划线
+			
+	库
+		.定义属性时，需要字段类型，字段类型被定义在django.db.models.fields目录
+		下，为了方便使用，被导入到django.db.models中
+		
+		.使用方式
+			.导入from django.db import models 
+			.通过models.Field创建字段类型的对象，赋值给属性、
+			
+		字段类型
+			.AutoField()
+				.一个根据实际ID自动增长的IntegerField，通常不指定如果不指定一个
+				主键字段将自动添加到模型中
+				
+			.CharField(max_length=字符长度)
+				.字符串，牧人的表单样式是TextInput
+				
+			.TextField
+				.大文本字段，一般超过4000使用，默认表单控件是Textarea
+				
+			.IntegerField
+				.整数
+				
+			.DecimalField(max_digits None, decimal_places None)
+				.使用python的Decimal实例表示十进制浮点数
+				.参数说明
+					.DecimalField.max_digits
+						.位数总数
+					.DecimalField.decimal_places
+						.小数点后的数字位数
+						
+			.FloatField
+				.用python的float实例来表示的浮点数
+				
+			.BooleanField
+				.true/false 字段，此字段的默认表单控制是CheckboxInput
+				
+			.NullBooleanField
+				.支持null true false 三种值
+				
+			.DateField([auto_now=False, auto_now_add=False])
+				.使用Python的datetime.date实例表示的日期
+				.参数说明
+					.DateField.auto_now
+						.每次保存对象时，自动设置字段为当前时间，用于“最后一次修改”
+						的时间戳，它总是使用当前日期，默认为false
+					.DateField.auto_now_add
+						.当前对象第一次被创建时自动设置当前时间，用于创建的时间戳，
+						它总是使用当前日期，默认为false
+						
+					.说明
+						.该字段默认对应的表单控件是一个TextInput，在管理员站点添加了
+						一个JavaScript写的日历控件，和一个“Today”的快捷键按钮，包含了
+						一个额外的invalid_date错误消息键
+					.注意
+						.auto_now_add，auto_now，and default 这些设置是互相排斥的，他
+						们之间任何组合将会发生错误
+						
+			.TimeField
+				.使用Python的datetime.time实例表示的时间，参数同DateField
+				
+			.DateTimeField
+				.使用Python的datetime. datetime实例表示的日期和时间，参数同DateField
+				
+			.FileField
+				.一个上传文件的字段
+				
+			.ImageField
+				.继承了FileField的所有属性和方法，但对上传对象进行校验，确保它是个有效
+				的image
+				
+		字段选项
+			.概述
+				.通过字段选项，可以实现对字段的约束
+				.在字段对象时通过关键字参数指定
+				
+			.null
+				.如果为True，Django将空值以NULL 储存到数据库中，默认值是False
+				
+			.blanke
+				.如果为True，则该字段允许为空白，默认值是false
+				
+			.注意
+				.null是数据库范畴的概念，blank是表单验证范畴的
+				
+			.db_column
+				.字段的名称，如果没指定，则使用属性的名称
+				
+			.db_index
+				.若值为True，则在表中会为此字段创建索引
+				
+			.default
+				.默认值
+			
+			.primary_key
+				.若为True，则该字段会成为模型主键字段
+				
+			.unique
+				.如果为True，这个字段在表中必循有为一值
+				
+				
+		关系
+			.分类
+				.ForeignKey: 一对多，将字段定义在多的端中
+				.ManyToManyField: 多对多，将字段定义在两端中
+				.OneToOneField： 一对一，将字段定义的在任意一端中
+				
+			.用一访问多
+				.格式
+					.对象。模型类小写_set
+				.示例
+					.grade.student_set
+					
+			.用一访问一
+				.格式
+					.对象.模型类小写
+				.示例
+					.grade.students
+					
+			.访问id
+				.格式
+					.对象.属性_id
+				.示例
+					.student.sgrade_id
+			
+			

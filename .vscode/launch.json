@@ -24,7 +24,7 @@
             "type": "chrome",
             "request": "launch",
             "sourceMaps": false,
-            "file": "${workspaceRoot}/JavaScript/class01/index.html"
+            "file": "${workspaceRoot}/WebDevelopment/BootStrap4_text/text01.html"
           }
     ]
 }
