@@ -20,4 +20,12 @@ from myApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('students/', views.students, name='students'),
+    path('students2/', views.students2, name='students2'),
+    path('students3/', views.students3, name='students3'),    
+    path('stu/<int:num>/', views.stupage),
+    path('studentsearch/', views.studentSearch, name='studentSearch'),
+    path('addstudents/', views.addstudents, name='addstudents'),
+    path('addstudents2/', views.addstudents2, name='addstudents2'),
+    path('grades/', views.grades),
 ]
